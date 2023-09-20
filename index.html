@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    margin: 0;
+  }
+
+  #evet, #hayir {
+    padding: 15px 25px;
+    background-color: rgb(219, 111, 129);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+  }
+  #sor{
+    color: rgb(219, 111, 129);
+  }
+</style>
+</head>
+<body>
+
+<h1 id="sor">Benimle evlenir misin?</h1>
+<img id="gif" src="kitty-cute.gif" style="width: 10%;" alt="kedyy">
+<div id="container">
+  <button id="evet" onclick="evetTiklandi()">Evet</button>
+  <button id="hayir" onmouseover="rastgeleKonum()">Hayır</button>
+</div>
+
+<script>
+  function evetTiklandi() {
+    document.getElementById("sor").style.display = "none";
+    document.getElementById("container").style.display = "none";
+    document.getElementById("gif").style.display = "none";
+
+    var yeniGif = document.createElement("img");
+    yeniGif.src = "yay.gif";
+    yeniGif.style.width = "30%";
+    document.body.appendChild(yeniGif);
+
+    yeniGif.onload = function() {
+        var teşekkürMesajı = document.createElement("div");
+        teşekkürMesajı.textContent = "Teşekkürrrr ederimmmmm!";
+        teşekkürMesajı.style.fontSize = "24px";
+        teşekkürMesajı.style.color = "rgb(219, 111, 129)";
+        teşekkürMesajı.style.marginTop = "20px";
+        document.body.appendChild(teşekkürMesajı);
+    }
+  }
+
+  function rastgeleKonum() {
+    var hayirButton = document.getElementById("hayir");
+    var maxX = window.innerWidth - hayirButton.clientWidth;
+    var maxY = window.innerHeight - hayirButton.clientHeight;
+    
+    var randomX = Math.floor(Math.random() * maxX);
+    var randomY = Math.floor(Math.random() * maxY);
+    
+    hayirButton.style.position = "absolute";
+    hayirButton.style.left = randomX + "px";
+    hayirButton.style.top = randomY + "px";
+  }
+</script>
+
+</body>
+</html>
